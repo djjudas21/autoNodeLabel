@@ -87,12 +87,15 @@ def drop_nones(d: dict) -> dict:
 if __name__ == '__main__':
     from cpuinfo import get_cpu_info
 
+    # Fetch CPU info
     cpuinfo = get_cpu_info()
 
+    # Generate basic labels
     labels = {}
     labels['cpuVendor'] = mapVendor(cpuinfo['vendor_id_raw'])
     labels['cpuString'] = cleanCpuString(cpuinfo['brand_raw'])
 
+    # Calculate some extra labels
     labels.update(parseCPU(labels['cpuVendor'], labels['cpuString']))
 
     # Drop None elements
