@@ -39,25 +39,25 @@ def parseCPU(vendor, cpu):
     """
     import re
 
-    cpuannotations = {}
+    cpulabels = {}
     if vendor == 'Intel':
         # Intel(R) Core(TM) i5-6300U CPU @ 2.40GHz
         # Intel(R) Core(TM) i5-6500T CPU @ 2.50GHz
         # Intel(R) Core(TM) i5-4590T CPU @ 2.00GHz
         result = re.search(r"(i\d)-(\d)?\d{3}([A-Z])?", cpu)
-        cpuannotations['cpuModel'] = result.group(0)
-        cpuannotations['cpuFamily'] = result.group(1)
-        cpuannotations['cpuGeneration'] = result.group(2)
-        cpuannotations['cpuLetter'] = result.group(3)
+        cpulabels['cpuModel'] = result.group(0)
+        cpulabels['cpuFamily'] = result.group(1)
+        cpulabels['cpuGeneration'] = result.group(2)
+        cpulabels['cpuLetter'] = result.group(3)
     elif vendor == 'AMD':
         pass
         # AMD Ryzen 7 5700G with Radeon Graphics
         result = re.search(r"AMD ((\w+ \d) (\d)\d+([A-Z]?))", cpu)
-        cpuannotations['cpuModel'] = result.group(1)
-        cpuannotations['cpuFamily'] = result.group(2)
-        cpuannotations['cpuGeneration'] = result.group(3)
-        cpuannotations['cpuLetter'] = result.group(4)
-    return cpuannotations
+        cpulabels['cpuModel'] = result.group(1)
+        cpulabels['cpuFamily'] = result.group(2)
+        cpulabels['cpuGeneration'] = result.group(3)
+        cpulabels['cpuLetter'] = result.group(4)
+    return cpulabels
 
 
 def drop_nones_inplace(d: dict) -> dict:
@@ -89,10 +89,10 @@ if __name__ == '__main__':
 
     cpuinfo = get_cpu_info()
 
-    annotations = {}
-    annotations['cpuVendor'] = mapVendor(cpuinfo['vendor_id_raw'])
-    annotations['cpuString'] = cleanCpuString(cpuinfo['brand_raw'])
+    labels = {}
+    labels['cpuVendor'] = mapVendor(cpuinfo['vendor_id_raw'])
+    labels['cpuString'] = cleanCpuString(cpuinfo['brand_raw'])
 
-    annotations.update(parseCPU(annotations['cpuVendor'], annotations['cpuString']))
+    labels.update(parseCPU(labels['cpuVendor'], labels['cpuString']))
 
-    print(drop_nones_inplace(annotations))
+    print(drop_nones_inplace(labels))
