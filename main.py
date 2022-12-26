@@ -59,6 +59,31 @@ def parseCPU(vendor, cpu):
         cpuannotations['cpuletter'] = result.group(4)
     return cpuannotations
 
+
+def drop_nones_inplace(d: dict) -> dict:
+    """Recursively drop Nones in dict d in-place and return original dict"""
+    dd = drop_nones(d)
+    d.clear()
+    d.update(dd)
+    return d
+
+
+def drop_nones(d: dict) -> dict:
+    """Recursively drop Nones in dict d and return a new dict"""
+    dd = {}
+    for k, v in d.items():
+        if isinstance(v, dict):
+            dd[k] = drop_nones(v)
+        elif isinstance(v, (list, set, tuple)):
+            # note: Nones in lists are not dropped
+            # simply add "if vv is not None" at the end if required
+            dd[k] = type(v)(drop_nones(vv) if isinstance(vv, dict) else vv
+                            for vv in v)
+        elif v is not None:
+            dd[k] = v
+    return dd
+
+
 if __name__ == '__main__':
     from cpuinfo import get_cpu_info
 
@@ -71,4 +96,4 @@ if __name__ == '__main__':
 
     annotations.update(parseCPU(annotations['vendor'], annotations['cpu']))
 
-    print(annotations)
+    print(drop_nones_inplace(annotations))
