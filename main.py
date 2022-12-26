@@ -102,6 +102,6 @@ if __name__ == '__main__':
     labels = (drop_nones_inplace(labels))
 
     # Generate fully qualified labels
-    prefix = 'autolabels.example.com'
+    prefix = 'autonodelabel.io'
     for key, value in labels.items():
         print(f"{prefix}/{key}: {value}")
