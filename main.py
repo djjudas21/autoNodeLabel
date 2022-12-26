@@ -29,10 +29,10 @@ if __name__ == '__main__':
     #    print("{0}: {1}".format(key, value))
 
     cpuinfo = get_cpu_info()
-    vendor = mapVendor(cpuinfo['vendor_id_raw'])
-    brand = cleanBrand(cpuinfo['brand_raw'])
-    speed = cpuinfo['hz_advertised_friendly']
 
-    print(f"vendor: {vendor}")
-    print(f"brand: {brand}")
-    print(f"speed: {speed}")
+    annotations = {}
+    annotations['vendor'] = mapVendor(cpuinfo['vendor_id_raw'])
+    annotations['brand'] = cleanBrand(cpuinfo['brand_raw'])
+    annotations['speed'] = cpuinfo['hz_advertised_friendly']
+
+    print(annotations)
