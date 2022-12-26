@@ -45,18 +45,18 @@ def parseCPU(vendor, cpu):
         # Intel(R) Core(TM) i5-6500T CPU @ 2.50GHz
         # Intel(R) Core(TM) i5-4590T CPU @ 2.00GHz
         result = re.search(r"(i\d)-(\d)?\d{3}([A-Z])?", cpu)
-        cpuannotations['cpumodel'] = result.group(0)
-        cpuannotations['cpufamily'] = result.group(1)
-        cpuannotations['cpugeneration'] = result.group(2)
-        cpuannotations['cpuletter'] = result.group(3)
+        cpuannotations['cpuModel'] = result.group(0)
+        cpuannotations['cpuFamily'] = result.group(1)
+        cpuannotations['cpuGeneration'] = result.group(2)
+        cpuannotations['cpuLetter'] = result.group(3)
     elif vendor == 'AMD':
         pass
         # AMD Ryzen 7 5700G with Radeon Graphics
         result = re.search(r"AMD ((\w+ \d) (\d)\d+([A-Z]?))", cpu)
-        cpuannotations['cpumodel'] = result.group(1)
-        cpuannotations['cpufamily'] = result.group(2)
-        cpuannotations['cpugeneration'] = result.group(3)
-        cpuannotations['cpuletter'] = result.group(4)
+        cpuannotations['cpuModel'] = result.group(1)
+        cpuannotations['cpuFamily'] = result.group(2)
+        cpuannotations['cpuGeneration'] = result.group(3)
+        cpuannotations['cpuLetter'] = result.group(4)
     return cpuannotations
 
 
@@ -90,10 +90,9 @@ if __name__ == '__main__':
     cpuinfo = get_cpu_info()
 
     annotations = {}
-    annotations['vendor'] = mapVendor(cpuinfo['vendor_id_raw'])
-    annotations['cpu'] = cleanBrand(cpuinfo['brand_raw'])
-    annotations['speed'] = cpuinfo['hz_advertised_friendly']
+    annotations['cpuVendor'] = mapVendor(cpuinfo['vendor_id_raw'])
+    annotations['cpuString'] = cleanCpuString(cpuinfo['brand_raw'])
 
-    annotations.update(parseCPU(annotations['vendor'], annotations['cpu']))
+    annotations.update(parseCPU(annotations['cpuVendor'], annotations['cpuString']))
 
     print(drop_nones_inplace(annotations))
