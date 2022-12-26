@@ -1,4 +1,7 @@
 def mapVendor(vendor):
+    """
+    Rewrite vendor name
+    """
     if vendor == 'GenuineIntel':
         returnval = 'Intel'
     elif vendor == 'AuthenticAMD':
@@ -7,7 +10,15 @@ def mapVendor(vendor):
         returnval = vendor
     return returnval
 
-def cleanBrand(brand):
+def cleanCpuString(brand):
+    """
+    Rewrite CPU string more neatly.
+    
+    This:
+        Intel(R) Core(TM) i5-6300U CPU @ 2.40GHz
+    Becomes:
+        Intel Core i5-6300U
+    """
     # Strip annoying chars
     brand = brand.replace('(R)', '')
     brand = brand.replace('(TM)', '')
@@ -23,6 +34,9 @@ def cleanBrand(brand):
     return brand
 
 def parseCPU(vendor, cpu):
+    """
+    Parse the CPU string to figure out some attributes
+    """
     import re
 
     cpuannotations = {}
