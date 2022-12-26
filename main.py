@@ -38,11 +38,11 @@ def parseCPU(vendor, cpu):
     elif vendor == 'AMD':
         pass
         # AMD Ryzen 7 5700G with Radeon Graphics
-        result = re.search(r"AMD ((\w+ \d) (\d)(\d+)([A-Z]?))", cpu)
-        cpuannotations['cpumodel'] = result.group(0)
-        cpuannotations['cpufamily'] = result.group(1)
-        cpuannotations['cpugeneration'] = result.group(2)
-        cpuannotations['cpuletter'] = result.group(3)
+        result = re.search(r"AMD ((\w+ \d) (\d)\d+([A-Z]?))", cpu)
+        cpuannotations['cpumodel'] = result.group(1)
+        cpuannotations['cpufamily'] = result.group(2)
+        cpuannotations['cpugeneration'] = result.group(3)
+        cpuannotations['cpuletter'] = result.group(4)
     return cpuannotations
 
 if __name__ == '__main__':
