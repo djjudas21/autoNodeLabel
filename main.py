@@ -95,4 +95,10 @@ if __name__ == '__main__':
 
     labels.update(parseCPU(labels['cpuVendor'], labels['cpuString']))
 
-    print(drop_nones_inplace(labels))
+    # Drop None elements
+    labels = (drop_nones_inplace(labels))
+
+    # Generate fully qualified labels
+    prefix = 'autolabels.example.com'
+    for key, value in labels.items():
+        print(f"{prefix}/{key}: {value}")
