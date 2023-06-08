@@ -5,7 +5,7 @@ Collect CPU info and add it as node labels
 import re
 from cpuinfo import get_cpu_info
 
-def mapVendor(vendor):
+def map_vendor(vendor):
     """
     Rewrite vendor name
     """
@@ -17,7 +17,7 @@ def mapVendor(vendor):
         returnval = vendor
     return returnval
 
-def cleanCpuString(brand):
+def clean_cpu_string(brand):
     """
     Rewrite CPU string more neatly.
     
@@ -40,7 +40,7 @@ def cleanCpuString(brand):
 
     return brand
 
-def parseCPU(vendor, cpu):
+def parse_cpu(vendor, cpu):
     """
     Parse the CPU string to figure out some attributes
     """
@@ -100,11 +100,11 @@ def main():
 
     # Generate basic labels
     labels = {}
-    labels['cpuVendor'] = mapVendor(cpuinfo['vendor_id_raw'])
-    labels['cpuString'] = cleanCpuString(cpuinfo['brand_raw'])
+    labels['cpuVendor'] = map_vendor(cpuinfo['vendor_id_raw'])
+    labels['cpuString'] = clean_cpu_string(cpuinfo['brand_raw'])
 
     # Calculate some extra labels
-    labels.update(parseCPU(labels['cpuVendor'], labels['cpuString']))
+    labels.update(parse_cpu(labels['cpuVendor'], labels['cpuString']))
 
     # Drop None elements
     labels = (drop_nones_inplace(labels))
