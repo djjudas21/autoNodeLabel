@@ -60,7 +60,6 @@ def parse_cpu(vendor, cpu):
         cpulabels['cpuGeneration'] = result.group(2)
         cpulabels['cpuLetter'] = result.group(3)
     elif vendor == 'AMD':
-        pass
         # AMD Ryzen 7 5700G with Radeon Graphics
         result = re.search(r"AMD ((\w+ \d) (\d)\d+([A-Z]?))", cpu)
         cpulabels['cpuModel'] = result.group(1)
