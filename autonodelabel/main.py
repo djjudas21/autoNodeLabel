@@ -1,3 +1,6 @@
+import re
+from cpuinfo import get_cpu_info
+
 def mapVendor(vendor):
     """
     Rewrite vendor name
@@ -37,7 +40,6 @@ def parseCPU(vendor, cpu):
     """
     Parse the CPU string to figure out some attributes
     """
-    import re
 
     cpulabels = {}
     if vendor == 'Intel':
@@ -85,7 +87,6 @@ def drop_nones(d: dict) -> dict:
 
 
 def main():
-    from cpuinfo import get_cpu_info
 
     # Fetch CPU info
     cpuinfo = get_cpu_info()
