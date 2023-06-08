@@ -1,3 +1,7 @@
+"""
+Collect CPU info and add it as node labels
+"""
+
 import re
 from cpuinfo import get_cpu_info
 
@@ -87,6 +91,9 @@ def drop_nones(d: dict) -> dict:
 
 
 def main():
+    """
+    Collect CPU info and add it as node labels
+    """
 
     # Fetch CPU info
     cpuinfo = get_cpu_info()
