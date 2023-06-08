@@ -51,9 +51,14 @@ def parse_cpu(vendor, cpu):
 
     cpulabels = {}
     if vendor == 'Intel':
+        # Intel(R) Core(TM) i5-3470T CPU @ 2.90GHz
         # Intel(R) Core(TM) i5-6300U CPU @ 2.40GHz
         # Intel(R) Core(TM) i5-6500T CPU @ 2.50GHz
         # Intel(R) Core(TM) i5-4590T CPU @ 2.00GHz
+        # Intel(R) Core(TM) i7-2600 CPU @ 3.40GHz
+        # Intel(R) Core(TM) i7-2600S CPU @ 2.80GHz
+        # 12th Gen Intel(R) Core(TM) i7-1265U
+        # 11th Gen Intel(R) Core(TM) i7-1185G7 @ 3.00GHz
         result = re.search(r"(i\d)-(\d)?\d{3}([A-Z])?", cpu)
         cpulabels['cpuModel'] = result.group(0)
         cpulabels['cpuFamily'] = result.group(1)
