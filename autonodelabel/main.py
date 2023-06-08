@@ -4,6 +4,8 @@ Collect CPU info and add it as node labels
 
 import re
 import os
+import argparse
+import time
 from cpuinfo import get_cpu_info
 from kubernetes import client, config
 
@@ -111,6 +113,18 @@ def main():
     Collect CPU info and add it as node labels
     """
 
+    # Read in args
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-d', '--dry-run',
+                        help="don't actually label anything", action='store_true')
+    parser.add_argument('-v', '--verbose',
+                        help="enable verbose output", action='store_true')
+    parser.add_argument('-s', '--sleep',
+                        help="sleep forever after labelling", action='store_true')
+    parser.add_argument('-p', '--prefix',
+                        help="prefix for node labels", default='autonodelabel.io', type=str)
+    args = parser.parse_args()
+
     # Connect to Kubernetes cluster
     config.load_kube_config()
     api_instance = client.CoreV1Api()
@@ -130,11 +144,11 @@ def main():
     labels = (drop_nones_inplace(labels))
 
     # Generate fully qualified labels
-    prefix = 'autolabels.example.com'
     prefixedlabels = {}
     for key, value in labels.items():
-        prefixedlabels[f"{prefix}/{key}"] = value
-        print(f"{prefix}/{key}: {value}")
+        prefixedlabels[f"{args.prefix}/{key}"] = value
+        if args.verbose is True:
+            print(f"{args.prefix}/{key}: {value}")
 
     # Deduce hostname from env var
     node = os.getenv('NODE_NAME') or 'localhost'
@@ -153,7 +167,14 @@ def main():
         }
 
         # Label node
-        api_response = api_instance.patch_node(node, body)
+        if args.dry_run is not True:
+            api_response = api_instance.patch_node(node, body)
+
+        # Sleep forever to allow running as a DaemonSet since there is currently
+        # no provision in Kubernetes for jobs that run on every node
+        if args.sleep:
+            while True:
+                time.sleep(3600)
 
     else:
         print(f"The determined node name {node} was not in the list of Kubernetes node names")

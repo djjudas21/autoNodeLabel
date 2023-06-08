@@ -8,6 +8,7 @@ authors = ["Jonathan Gazeley <me@jonathangazeley.com>"]
 python = "^3.11"
 py-cpuinfo = "^9.0.0"
 kubernetes = "^26.1.0"
+argparse = "^1.4.0"
 
 [tool.poetry.dev-dependencies]
 
