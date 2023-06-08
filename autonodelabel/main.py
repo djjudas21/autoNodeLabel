@@ -3,6 +3,7 @@ Collect CPU info and add it as node labels
 """
 
 import re
+import os
 from cpuinfo import get_cpu_info
 
 def map_vendor(vendor):
@@ -94,6 +95,9 @@ def main():
     """
     Collect CPU info and add it as node labels
     """
+
+    # Deduce hostname from env var
+    node = os.getenv('NODE_NAME')
 
     # Fetch CPU info
     cpuinfo = get_cpu_info()
