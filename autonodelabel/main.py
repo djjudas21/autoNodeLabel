@@ -84,7 +84,7 @@ def drop_nones(d: dict) -> dict:
     return dd
 
 
-if __name__ == '__main__':
+def main():
     from cpuinfo import get_cpu_info
 
     # Fetch CPU info
@@ -105,3 +105,6 @@ if __name__ == '__main__':
     prefix = 'autolabels.example.com'
     for key, value in labels.items():
         print(f"{prefix}/{key}: {value}")
+
+if __name__ == '__main__':
+    main()
