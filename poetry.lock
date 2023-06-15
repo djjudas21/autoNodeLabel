@@ -151,14 +151,14 @@ files = [
 
 [[package]]
 name = "cpumodel"
-version = "0.0.2"
+version = "0.0.3"
 description = "Get info about your CPU"
 category = "main"
 optional = false
 python-versions = ">=3.9,<4.0"
 files = [
-    {file = "cpumodel-0.0.2-py3-none-any.whl", hash = "sha256:771c215409ad63a71da723c3006d3dad1fafdba7794ac116260fd3aa3004e565"},
-    {file = "cpumodel-0.0.2.tar.gz", hash = "sha256:9c057a82f78340110b83cf51db436d24992ccbcdd5f5ac0985c25c4cfa66b7cc"},
+    {file = "cpumodel-0.0.3-py3-none-any.whl", hash = "sha256:663336871ba18f00db5eee16140fd9fb525736e243e0aa425f2c247b5e4c7710"},
+    {file = "cpumodel-0.0.3.tar.gz", hash = "sha256:8f37de1449b6fefa855d4316c15e4dc060a7ae63ff920122050e1d73f687f805"},
 ]
 
 [package.dependencies]
@@ -702,4 +702,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "8d651d561228e071dbe0a741cd13cf537f77d4354d917ed8653aecb296a8c39d"
+content-hash = "41d9ec5671a723266c33fc8c83e3ae4820c14a5fa93e0c893914700c1d2e0861"
