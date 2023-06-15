@@ -123,17 +123,18 @@ files = [
 
 [[package]]
 name = "cpumodel"
-version = "0.0.1"
+version = "0.0.2"
 description = "Get info about your CPU"
 category = "main"
 optional = false
 python-versions = ">=3.9,<4.0"
 files = [
-    {file = "cpumodel-0.0.1-py3-none-any.whl", hash = "sha256:932d6d49ec21632994d7e94f88a898b41e96b4c91956972b2b69f49ab03206f1"},
-    {file = "cpumodel-0.0.1.tar.gz", hash = "sha256:9f8df3d5c60623793ddd84bffb8083c79455c33a99f4b5bda28a9996194e97fa"},
+    {file = "cpumodel-0.0.2-py3-none-any.whl", hash = "sha256:771c215409ad63a71da723c3006d3dad1fafdba7794ac116260fd3aa3004e565"},
+    {file = "cpumodel-0.0.2.tar.gz", hash = "sha256:9c057a82f78340110b83cf51db436d24992ccbcdd5f5ac0985c25c4cfa66b7cc"},
 ]
 
 [package.dependencies]
+argparse = ">=1.4.0,<2.0.0"
 py-cpuinfo = ">=9.0.0,<10.0.0"
 
 [[package]]
@@ -444,4 +445,4 @@ test = ["websockets"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "f584211e15ce4961d170f0c6b49a9d22b0bb96a52a62fcf7a76810611dc9eb1b"
+content-hash = "d2362819b3dfe2bbe4f2ef2acd1644ce5ec3302d2d7173b758da19ea38a62135"
