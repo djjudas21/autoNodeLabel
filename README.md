@@ -1,6 +1,6 @@
 # autonodelabel
 
-Interrogate Kubernetes nodes and add various properties of the system as node labels, to help with scheduling.
+Interrogate Kubernetes nodes and add various properties of the hardware as node labels, to help with scheduling in mixed hardware clusters.
 
 By default, only the following hardware labels are provided on MicroK8s:
 
