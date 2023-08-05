@@ -56,6 +56,9 @@ def main():
     # Deduce hostname from env var
     node = os.getenv('NODE_NAME') or 'localhost'
 
+    if args.verbose is True:
+        print(f"Found node name {node}")
+
     # Get list of nodes from Kubernetes API
     nodes = list_nodes(api_instance)
 
