@@ -37,9 +37,9 @@ autonodelabel.io/cpuString: Cortex-A72
 
 ```yaml
 autonodelabel.io/cpuVendor: Intel
-autonodelabel.io/cpuString: "Intel Core i5-6300U"
-autonodelabel.io/cpuModel: "Core i5-6300U"
-autonodelabel.io/cpuFamily: "Core i5"
+autonodelabel.io/cpuString: "Intel-Core i5-6300U"
+autonodelabel.io/cpuModel: "Core-i5-6300U"
+autonodelabel.io/cpuFamily: "Core-i5"
 autonodelabel.io/cpuGeneration: "6"
 autonodelabel.io/cpuLetter: U
 ```
@@ -48,9 +48,9 @@ autonodelabel.io/cpuLetter: U
 
 ```yaml
 autonodelabel.io/cpuVendor: AMD
-autonodelabel.io/cpuString: "AMD Ryzen 7 5700G"
-autonodelabel.io/cpuModel: "Ryzen 7 5700G"
-autonodelabel.io/cpuFamily: "Ryzen 7"
+autonodelabel.io/cpuString: "AMD-Ryzen-7-5700G"
+autonodelabel.io/cpuModel: "Ryzen-7-5700G"
+autonodelabel.io/cpuFamily: "Ryzen-7"
 autonodelabel.io/cpuGeneration: "5"
 autonodelabel.io/cpuLetter: G
 ```
@@ -71,7 +71,7 @@ metadata:
   name: test
 spec:
   nodeSelector:
-    autonodelabel.io/cpuFamily: "Core i5"
+    autonodelabel.io/cpuFamily: "Core-i5"
 ```
 
 ## Docker image
