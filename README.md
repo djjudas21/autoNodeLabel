@@ -78,3 +78,5 @@ spec:
 
 There is a Docker image published as [djjudas21/autonodelabel](https://hub.docker.com/r/djjudas21/autonodelabel).
 This image is built with `-v` for verbose output and `-s` for sleep forever, so it can be used as Kubernetes DaemonSet.
+
+Don't run this image in plain Docker/Podman - it expects Kubernetes.
