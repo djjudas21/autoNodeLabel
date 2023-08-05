@@ -7,3 +7,5 @@ ADD . /src
 WORKDIR /src
 
 RUN poetry install
+
+CMD ["autonodelabel","-v","-s"]

@@ -73,3 +73,8 @@ spec:
   nodeSelector:
     autonodelabel.io/cpuFamily: "Core i5"
 ```
+
+## Docker image
+
+There is a Docker image published as [djjudas21/autonodelabel](https://hub.docker.com/r/djjudas21/autonodelabel).
+This image is built with `-v` for verbose output and `-s` for sleep forever, so it can be used as Kubernetes DaemonSet.
