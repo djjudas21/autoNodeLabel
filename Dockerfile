@@ -8,4 +8,4 @@ WORKDIR /src
 
 RUN poetry install
 
-CMD ["autonodelabel","-v","-s"]
+CMD ["poetry","run","autonodelabel","-v","-s"]
