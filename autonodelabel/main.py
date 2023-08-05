@@ -40,7 +40,7 @@ def main():
     args = parser.parse_args()
 
     # Connect to Kubernetes cluster
-    config.load_kube_config()
+    config.load_incluster_config()
     api_instance = client.CoreV1Api()
 
     # Get generic CPU attributes from cpumodel
