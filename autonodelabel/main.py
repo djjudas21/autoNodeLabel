@@ -49,7 +49,7 @@ def main():
     # Generate fully qualified labels
     prefixedlabels = {}
     for key, value in labels.items():
-        value.replace(" ", "-")
+        value = value.replace(" ", "-")
         prefixedlabels[f"{args.prefix}/{key}"] = value
         if args.verbose is True:
             print(f"{args.prefix}/{key}: {value}")
