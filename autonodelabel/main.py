@@ -48,11 +48,13 @@ def main():
 
     # Generate fully qualified labels
     prefixedlabels = {}
+    if args.verbose is True:
+        print("Generated labels:")
     for key, value in labels.items():
         value = value.replace(" ", "-")
         prefixedlabels[f"{args.prefix}/{key}"] = value
         if args.verbose is True:
-            print(f"{args.prefix}/{key}: {value}")
+            print(f"    {args.prefix}/{key}: {value}")
 
     # Deduce hostname from env var
     node = os.getenv('NODE_NAME') or 'localhost'
@@ -80,6 +82,8 @@ def main():
         # Sleep forever to allow running as a DaemonSet since there is currently
         # no provision in Kubernetes for jobs that run on every node
         if args.sleep:
+            if args.verbose is True:
+                print("Sleeping forever...")
             while True:
                 time.sleep(3600)
 
