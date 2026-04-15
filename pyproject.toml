@@ -16,7 +16,7 @@ cpumodel = "^0.0.3"
 autonodelabel = 'autonodelabel.main:main'
 
 [tool.poetry.group.dev.dependencies]
-pylint = "^2.17.4"
+pylint = ">=2.17.4"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
