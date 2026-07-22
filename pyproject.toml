@@ -5,7 +5,7 @@ description = "Automatically label Kubernetes nodes based on their hardware"
 authors = ["Jonathan Gazeley <me@jonathangazeley.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.10"
 kubernetes = "^35.0.0"
 argparse = "^1.4.0"
 cpumodel = "^0.0.3"
